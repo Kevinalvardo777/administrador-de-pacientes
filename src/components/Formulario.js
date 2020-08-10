@@ -12,9 +12,17 @@ const Formulario = () => {
     });
 
     //Funcion que se ejecuta cada que un usuario escribe un post
-    const actualizarState = () =>{
-        console.log('escribiendo...');
+    const actualizarState = e =>{
+        //console.log(e.target.value);
+        actualizarCita({
+            //ponemos una copia de la cita, para que no perdamos la referencia de los demas campos del objeto
+            ...cita, 
+            [e.target.name] : e.target.value
+        })
     }
+
+    //Extraer los valores con destructuring
+    const { mascota, propietario, fecha, hora, sintomas} = cita;
 
     return ( 
     <Fragment>
@@ -27,6 +35,7 @@ const Formulario = () => {
                 className="u-full-width"
                 placeholder="Nombre mascota"
                 onChange={actualizarState}
+                value = {mascota}
             ></input>
 
             <label>Nombre dueño</label>
@@ -36,7 +45,7 @@ const Formulario = () => {
                 className="u-full-width"
                 placeholder="Nombre dueño de la mascota"
                 onChange={actualizarState}
-
+                value = {propietario}
             ></input>
 
             <label>Fecha</label>
@@ -45,7 +54,7 @@ const Formulario = () => {
                 name="fecha"
                 className="u-full-width"
                 onChange={actualizarState}
-
+                value = {fecha}
             ></input>
             
 
@@ -55,7 +64,7 @@ const Formulario = () => {
                 name="hora"
                 className="u-full-width"
                 onChange={actualizarState}
-
+                value = {hora}
             >
             </input>
 
@@ -64,7 +73,7 @@ const Formulario = () => {
                 className="u-full-width"
                 name="sintomas"
                 onChange={actualizarState}
-
+                value = {sintomas}
             ></textarea>
 
             <button
