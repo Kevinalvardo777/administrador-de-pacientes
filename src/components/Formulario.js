@@ -27,6 +27,7 @@ const Formulario = () => {
                 name="fecha"
                 className="u-full-width"
             ></input>
+            
 
             <label>Hora</label>
             <input
