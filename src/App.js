@@ -1,13 +1,25 @@
-import React, {Fragment} from 'react';
+import React, {Fragment, useState} from 'react';
 import Formulario from './components/Formulario';
 
 function App() {
+
+  const [citas, guardarCitas] = useState([]);
+
+  //Funcion que tome las citas actuales y agregue las nuevas
+  const crearCita = cita =>{
+    guardarCitas([
+      ...citas,
+      cita
+    ]);
+  }
+
   return (
     <Fragment>
       <h1>Administrador de Pacientes</h1>
       <div className="container">
           <div className="one-half column">
-            <Formulario />
+            <Formulario 
+            crearCita={crearCita}/>
           </div>
           <div className="one-half column"> 2</div>
       </div>

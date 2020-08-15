@@ -1,6 +1,7 @@
 import React, {Fragment, useState} from 'react';
+import { uuid } from 'uuidv4';
 
-const Formulario = () => {
+const Formulario = ({crearCita}) => {
 
     //Crear el state de citas
     const [cita, actualizarCita] = useState({
@@ -39,9 +40,18 @@ const Formulario = () => {
             actualizarError(true);
             return;
         }
+
+        //Eliminar mensake previo de error
+        actualizarError(false);
+
+        //instalar npm uuid, libreria que genera un id grande
+        cita.id = uuid();
+
+        console.log(cita);
         //Asignar un ID
 
         //Crear la cita
+        crearCita(cita);
 
         //Reiniciar el form
     }
