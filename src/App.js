@@ -14,6 +14,13 @@ function App() {
     ]);
   }
 
+  //Funcion que elimina una cita por su id
+  const eliminarCita = id =>{
+    //console.log(id);
+    const nuevasCitas = citas.filter(cita => cita.id !== id );
+    guardarCitas(nuevasCitas);
+  }
+
   return (
     <Fragment>
       <h1>Administrador de Pacientes</h1>
@@ -27,6 +34,7 @@ function App() {
             {citas.map(cita => (
               <Cita
               key={cita.id} 
+              eliminarCita={eliminarCita}
               cita={cita}/>
             ))}
           </div>
